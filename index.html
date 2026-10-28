@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paper & Petals — Journal Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Gochi+Hand&family=Kalam:wght@400;700&family=Playfair+Display:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="style.css"> <link rel="stylesheet" href="scriipt.js">
+<style>
+
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><div class="brand-mark">🌷</div><div><h1>Paper & Petals</h1><p>Your little journaling studio</p></div></div>
+  <div class="top-actions"><button class="btn" id="clearBtn">↺ Start fresh</button><button class="btn" id="saveBtn">♡ Save draft</button><button class="btn primary" id="printBtn">✿ Print my page</button></div>
+</header>
+<main class="layout">
+<aside class="sidebar">
+  <section class="panel">
+    <h2>✧ Page settings</h2>
+    <div class="field"><label for="paperSize">Paper size</label><select id="paperSize"><option value="a5">A5 — journal size</option><option value="letter">Letter</option><option value="square">Square scrapbook</option></select></div>
+    <div class="field"><label for="paperStyle">Paper style</label><select id="paperStyle"><option value="ruled">Ruled notebook</option><option value="plain">Plain paper</option><option value="dotted">Dotted journal</option><option value="gridpaper">Grid paper</option><option value="vintage">Vintage paper</option></select></div>
+    <h3>Paper colour</h3>
+    <div class="options" id="paperColors">
+      <button class="swatch active" data-paper="cream" style="background:#fffaf0"><span>Vanilla</span></button>
+      <button class="swatch" data-paper="blush" style="background:#fff0f5"><span>Blush pink</span></button>
+      <button class="swatch" data-paper="lavender" style="background:#f5efff"><span>Lavender</span></button>
+      <button class="swatch" data-paper="sage" style="background:#f1f7e9"><span>Sage</span></button>
+      <button class="swatch" data-paper="sky" style="background:#edf7ff"><span>Baby blue</span></button>
+      <button class="swatch" data-paper="midnight" style="background:#282735"><span style="color:#fff">Midnight</span></button>
+    </div>
+  </section>
+  <section class="panel">
+    <h2>✎ Your writing tools</h2>
+    <div class="field"><label for="fontSelect">Handwriting / font</label><select id="fontSelect"><option value="Kalam">Kalam — handwritten</option><option value="Gochi Hand">Gochi Hand — playful</option><option value="Sacramento">Sacramento — pretty script</option><option value="Quicksand">Quicksand — clean</option><option value="Playfair Display">Playfair — editorial</option></select></div>
+    <div class="field"><label for="penColor">Pen colour</label><div class="color-row" id="penColors">
+      <button class="color-dot active" data-color="#4e4148" style="background:#4e4148" aria-label="Ink"></button><button class="color-dot" data-color="#bd5477" style="background:#bd5477" aria-label="Rose"></button><button class="color-dot" data-color="#7862b5" style="background:#7862b5" aria-label="Lilac"></button><button class="color-dot" data-color="#387b70" style="background:#387b70" aria-label="Sage"></button><button class="color-dot" data-color="#3977b8" style="background:#3977b8" aria-label="Blue"></button><button class="color-dot" data-color="#d77a35" style="background:#d77a35" aria-label="Orange"></button>
+      <input id="customPen" type="color" value="#4e4148" title="Custom pen colour" style="width:30px;height:30px;border:0;background:transparent;padding:0">
+    </div></div>
+    <div class="toolrow"><button class="tool" id="bulletBtn">✿ Add bullets</button><button class="tool" id="boldBtn"><b>B</b> Bold</button><button class="tool" id="centerBtn">☷ Center title</button></div>
+    <div class="field" style="margin-top:13px"><label for="pageTitle">Diary title</label><input id="pageTitle" type="text" value="Little moments" maxlength="60"></div>
+    <div class="field"><label for="pageSubtitle">Subtitle / mood</label><input id="pageSubtitle" type="text" value="a little note to my future self" maxlength="90"></div>
+    <div class="field"><label for="entryDate">Date</label><input id="entryDate" type="date"></div>
+  </section>
+  <section class="panel">
+    <h2>♡ Sticker drawer</h2>
+    <p style="font-size:12px;color:#9b8791;margin:-5px 0 12px">Tap a sticker to add it to your page.</p>
+    <div class="mini-grid" id="stickerTray">
+      <button class="sticker" data-sticker="🌷">🌷</button><button class="sticker" data-sticker="🎀">🎀</button><button class="sticker" data-sticker="✨">✨</button><button class="sticker" data-sticker="🦋">🦋</button>
+      <button class="sticker" data-sticker="💗">💗</button><button class="sticker" data-sticker="🌙">🌙</button><button class="sticker" data-sticker="🍓">🍓</button><button class="sticker" data-sticker="☁️">☁️</button>
+      <button class="sticker" data-sticker="🌼">🌼</button><button class="sticker" data-sticker="🧸">🧸</button><button class="sticker" data-sticker="⭐">⭐</button><button class="sticker" data-sticker="🍒">🍒</button>
+      <button class="sticker" data-sticker="🕯️">🕯️</button><button class="sticker" data-sticker="🪻">🪻</button><button class="sticker" data-sticker="🩰">🩰</button><button class="sticker" data-sticker="☕">☕</button>
+    </div>
+    <h3>Paper cutouts</h3>
+    <div class="toolrow"><button class="tool" data-cutout="a little reminder">✂ Reminder</button><button class="tool" data-cutout="today's tiny joy">✂ Tiny joy</button><button class="tool" data-cutout="note to self">✂ Note to self</button><button class="tool" data-cutout="♡ made with love ♡">✂ Love note</button></div>
+    <h3>Washi tape</h3><div class="toolrow"><button class="tool" data-tape="#efb9ccbb">🌸 Pink</button><button class="tool" data-tape="#c9b9e8bb">💜 Lilac</button><button class="tool" data-tape="#c7ddbabb">🌿 Sage</button>
+    </div>
+    <p style="font-size:11px;color:#9b8791;line-height:1.5;margin-bottom:0">Tip: drag stickers, cutouts and tape around your paper. Click a decoration and press Delete to remove it.</p>
+  </section>
+  <section class="panel">
+    <h2>📌 Sticky-note trackers</h2>
+    <p style="font-size:12px;color:#9b8791;margin:-5px 0 12px">Add a mini tracker to your diary page.</p>
+    <div class="toolrow">
+      <button class="tool" data-tracker="habit">Habit ✦</button><button class="tool" data-tracker="mood">Mood ☻</button><button class="tool" data-tracker="water">Water 💧</button><button class="tool" data-tracker="sleep">Sleep ☾</button><button class="tool" data-tracker="reading">Reading ♡</button><button class="tool" data-tracker="gratitude">Gratitude ✿</button><button class="tool" data-tracker="spending">Spending ৳</button><button class="tool" data-tracker="todo">To-do ✓</button>
+    </div>
+  </section>
+</aside>
+<section class="workspace">
+  <div class="workspace-head"><div><h2>Your journal page</h2><p>Write your heart out. Make it yours. Print it when it feels right.</p></div><span style="font-size:12px;color:#9c7a8a">✦ made for your little moments</span></div>
+  <div class="page-wrap"><article class="paper a5 ruled cream" id="paper">
+    <div class="decor-layer" id="decorLayer"></div>
+    <header class="paper-head"><span class="paper-kicker">a page from my life</span><span class="paper-date" id="shownDate"></span></header>
+    <h2 class="diary-title" id="shownTitle" contenteditable="true" spellcheck="false">Little moments</h2>
+    <div class="diary-subtitle" id="shownSubtitle" contenteditable="true" spellcheck="false">a little note to my future self</div>
+    <div class="writing-area" id="writingArea" contenteditable="true" spellcheck="true"></div>
+    <div class="tracker-grid" id="trackerGrid"></div>
+    <footer class="paper-bottom"><span>♡ slow down & notice</span><span>page of my own story ✧</span></footer>
+  </article></div>
+  <p class="paper-instructions">For best results, print at 100% scale and turn on “Background graphics” in your print settings.</p>
+</section>
+</main>
+<footer class="footer">Paper & Petals · a little corner for your thoughts 🌷</footer>
+<div class="toast" id="toast"></div>
+<script>
+
+</script>
+</body>
+</html>
